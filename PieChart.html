@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pie Chart</title>
+	<style type="text/css">
+		.dark { background: #2c3e50; }
+		.pop { transform-origin: 50% 50%; animation: pop 2s linear infinite; }
+		@keyframes pop {
+			from { transform: scale(0); opacity: 1; }
+			to { transform: scale(1.5); opacity: 0; }
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="Graphs.js"></script>
+	<script type="text/javascript">
+		var g = new RKGraph.PieGraph({
+			width: 400,
+			height: 400,
+			data: [44, 99, 1000, 50],
+			color: ["#e74c3c", "#2ecc71", "#3498db", "#e67e22"],
+			fixedcolumns: true,
+			columns: ["Red", "Green", "Blue", "Orange"],
+			theme: "dark",
+			doDup: true,
+			dupClass: "pop"
+		});
+	</script>
+</body>
+</html>

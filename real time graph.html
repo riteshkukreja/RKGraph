@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		body { margin: 0; text-align: center; background: #DDD; }
+		svg.light, svg { background: #EEE; }
+		svg.dark { background: #121212; }
+		svg { margin-top: calc(50vh - 250px); }
+	</style>
+</head>
+<body>
+
+	<svg id="aa"></svg>
+
+<script type="text/javascript" src="Graphs.js"></script>
+<script type="text/javascript">	
+	var svg = document.getElementById("aa");
+	var g = RKGraph.PolygonGraph({
+		width: 500,
+		height: 500,
+		columns: 10,
+		data: [23, 67, 45, 66, 27],
+		svg: svg,
+		color: "rgba(0, 60, 200, .7)"
+	});
+
+
+	var g2 = RKGraph.BarGraph({
+		width: 500,
+		height: 500,
+		data: [23, 67, 45, 66, 27],
+		columns: 10,
+		theme: "dark",
+		averageLineColor: "white",
+		color: "rgba(0, 200, 30, .7)",
+		showAverage: true
+	});
+
+
+	var g3 = RKGraph.LineGraph({
+		width: 500,
+		height: 500,
+		data: [23, 67, 45, 66, 27],
+		columns: 10,
+		theme: "light",
+		averageLineColor: "black",
+		color: "orange",
+		showAverage: true
+	});
+
+	var random = function(min, max) {
+		return Math.floor(Math.random() * (max-min) + min);
+	}
+
+	var lastP1 = 50, lastP2 = 50, lastP3 = 50;
+
+	setInterval(function() {
+		lastP1 += random(-10, 10);
+		lastP2 += random(-10, 10);
+		lastP3 += random(-10, 10);
+
+		if(lastP2 > 100) lastP2 = 50;
+		if(lastP1 > 100) lastP1 = 50;
+		if(lastP1 < 0) lastP1 = 50;
+		if(lastP2 < 0) lastP2 = 50;
+		if(lastP3 > 100) lastP3 = 50;
+		if(lastP3 < 0) lastP3 = 50;
+
+		g.Add(lastP1);
+		g2.Add(lastP2);
+		g3.Add(lastP3);
+	}, 1000/5);
+</script>
+</body>
+</html>
