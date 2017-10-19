@@ -3,44 +3,46 @@
 <head>
 	<title></title>
 	<style type="text/css">
-		body { margin: 0; text-align: center; background: #DDD; }
+		body { margin: 0; text-align: center; background: #DDD; overflow: hidden; }
 		svg.light, svg { background: #EEE; }
 		svg.dark { background: #121212; }
-		svg { margin-top: calc(50vh - 250px); }
+		svg { margin-top: 0px; }
 	</style>
 </head>
 <body>
 
 	<svg id="container"></svg>
 
-<script type="text/javascript" src="RKGraphs.js"></script>
+<script type="text/javascript" src="../RKGraphs.js"></script>
 <script type="text/javascript">	
 	var svg = document.getElementById("container");
 	var g = RKGraph.PolygonGraph({
-		width: 500,
-		height: 500,
+		width: window.innerWidth/3.1,
+		height: window.innerWidth/3.1,
 		columns: 10,
 		data: [23, 67, 45, 66, 27],
 		svg: svg,
+		averageLineColor: "black",
+		showAverage: true,
 		color: "rgba(0, 60, 200, .7)"
 	});
 
 
 	var g2 = RKGraph.BarGraph({
-		width: 500,
-		height: 500,
+		width: window.innerWidth/3.1,
+		height: window.innerWidth/3.1,
 		data: [23, 67, 45, 66, 27],
 		columns: 10,
 		theme: "dark",
-		averageLineColor: "white",
+		averageLineColor: "black",
 		color: "rgba(0, 200, 30, .7)",
 		showAverage: true
 	});
 
 
 	var g3 = RKGraph.LineGraph({
-		width: 500,
-		height: 500,
+		width: window.innerWidth/3.1,
+		height: window.innerWidth/3.1,
 		data: [23, 67, 45, 66, 27],
 		columns: 10,
 		theme: "light",

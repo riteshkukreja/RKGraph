@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Line Graph</title>
+	<style type="text/css">		
+		body { margin: 0; text-align: center; background: #111; overflow: hidden; }
+		svg.light, svg { background: #111; }
+		svg.dark { background: #121212; }
+		svg { margin-top: 0; }
+	</style>
+</head>
+<body>
+
+
+<script type="text/javascript" src="../RKGraphs.js"></script>
+<script type="text/javascript">	
+	var last = 50;
+	var g = RKGraph.BarGraph({
+		width: window.innerWidth,
+		height: window.innerHeight,
+		columns: 20,
+		rows: 10,
+		data: [],
+		color: "#27ae60",
+		averageLineColor: "#eee",
+		showAverage: true,
+		theme: {
+			textColor: "#eee",
+			verticesColor: "#eee"
+		}
+	});
+
+	var random = function(min, max) {
+		return Math.floor(Math.random() * (max-min) + min);
+	}
+
+	setInterval(function() {
+		last += random(-10, 10);
+
+		if(last < 10)
+			last = 10;
+		if(last > 100)
+			last = 100;
+
+		g.Add(last);
+	}, 200);
+</script>
+
+</body>
+</html>

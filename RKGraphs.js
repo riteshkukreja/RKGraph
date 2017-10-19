@@ -775,14 +775,14 @@
 				svgDoc.Line(prevPoint.x, prevPoint.y, currPoint.x, currPoint.y, {
 					"stroke": color,
 					"class": dupClass,
-					"strokeWidth": strokeWidth
+					"stroke-width": strokeWidth
 				});
 			}
 
 			svgDoc.Line(prevPoint.x, prevPoint.y, currPoint.x, currPoint.y, {
 				"stroke": color,
 				"class": className,
-				"strokeWidth": strokeWidth
+				"stroke-width": strokeWidth
 			});
 
 			if(config.average) {
@@ -832,7 +832,7 @@
 						"stroke": stroke ? (gradient ? "url(#" + gradient + ")" : color): "none",
 						"fill": !stroke ? (gradient ? "url(#" + gradient + ")" : color): "transparent",
 						"class": dupClass,
-						"strokeWidth": strokeWidth
+						"stroke-width": strokeWidth
 					});
 				}
 
@@ -840,7 +840,7 @@
 					"stroke": stroke ? (gradient ? "url(#" + gradient + ")" : color): "none",
 					"fill": !stroke ? (gradient ? "url(#" + gradient + ")" : color): "transparent",
 					"class": className,
-					"strokeWidth": strokeWidth
+					"stroke-width": strokeWidth
 				});
 
 				if(config.average) {
@@ -1073,7 +1073,7 @@
 						"stroke": stroke ? (gradient ? "url(#" + gradient + ")" : color): "none",
 						"fill": !stroke ? (gradient ? "url(#" + gradient + ")" : color): "transparent",
 						"class": dupClass,
-						"strokeWidth": strokeWidth
+						"stroke-width": strokeWidth
 					});
 				}
 
@@ -1081,7 +1081,7 @@
 					"stroke": stroke ? (gradient ? "url(#" + gradient + ")" : color): "none",
 					"fill": !stroke ? (gradient ? "url(#" + gradient + ")" : color): "transparent",
 					"class": className,
-					"strokeWidth": strokeWidth
+					"stroke-width": strokeWidth
 				});
 
 				if(config.average) {

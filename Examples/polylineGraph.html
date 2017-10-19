@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Line Graph</title>
+	<title>Polyline Graph</title>
 	<style type="text/css">		
-		body { margin: 0; text-align: center; background: #2980b9; }
-		svg.light, svg { background: #2980b9; }
+		body { margin: 0; text-align: center; background: #111; overflow: hidden; }
+		svg.light, svg { background: #111; }
 		svg.dark { background: #121212; }
-		svg { margin-top: calc(50vh - 350px); }
+		svg { margin-top: 0px; }
 	</style>
 </head>
 <body>
 
 
-<script type="text/javascript" src="RKGraphs.js"></script>
+<script type="text/javascript" src="../RKGraphs.js"></script>
 <script type="text/javascript">	
 	var last = 0;
 	var frac = 90;
-	var g = RKGraph.LineGraph({
-		width: 800,
-		height: 700,
+	var g = RKGraph.PolylineGraph({
+		width: window.innerWidth,
+		height: window.innerHeight,
 		columns: 20,
 		rows: 10,
 		data: [],
-		gradient: 'mygrad',
-		color: ["rgba(0, 0, 0, .4)", "rgba(0, 0, 0, .4)", "rgba(0, 0, 0, .4)", "rgba(0, 0, 0, .05)"],
 		direction: "top-bottom",
 		averageLineColor: "#eee",
 		showAverage: true,
+		stroke: true,
 		theme: {
 			textColor: "#eee",
 			verticesColor: "#eee"

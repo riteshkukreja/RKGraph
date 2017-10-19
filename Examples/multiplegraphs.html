@@ -3,9 +3,9 @@
 <head>
 	<title></title>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-	<script type="text/javascript" src="angular-RKGraphs.js"></script>
+	<script type="text/javascript" src="../angular-RKGraphs.js"></script>
 	<style type="text/css">
-		body { background: #444; }
+		body { background: #111; overflow: hidden; }
 	</style>
 </head>
 <body ng-app="myapp" ng-controller="myctrl">
@@ -17,15 +17,14 @@
 		app.controller("myctrl", function($scope, $interval, GraphProvider) {
 			$scope.data = [5,6,7,3];
 			$scope.data2 = [56,3,23,55];
-			$scope.colors = ["#c0392b", "#27ae60", "#2980b9", "#f39c12"];
-			$scope.columns = ["1", "2", "3", "4"];
 
-			GraphProvider.LineGraph({
-				width: 400,
-				height: 400,
+			$scope.g1 = GraphProvider.LineGraph({
+				width: window.innerWidth,
+				height: window.innerHeight,
 				columns: 20,
 				rows: 10,
 				data: $scope.data,
+				strokeWidth: 10,
 				svg: document.getElementById("test"),
 				color: 'blue',
 				theme: {
@@ -34,13 +33,14 @@
 				}
 			});
 
-			GraphProvider.LineGraph({
-				width: 400,
-				height: 400,
+			$scope.g2 = GraphProvider.LineGraph({
+				width: window.innerWidth,
+				height: window.innerHeight,
 				columns: 20,
 				rows: 10,
 				data: $scope.data2,
 				dontClear: true,
+				strokeWidth: 10,
 				svg: document.getElementById("test"),
 				color: 'red',
 				theme: {
@@ -49,9 +49,10 @@
 				}
 			});
 
-			/*$interval(function() {
-				$scope.data.push(Math.random() * 100);
-			}, 100);*/
+			$interval(function() {
+				$scope.g1.Add(Math.random() * 100);
+				$scope.g2.Add(Math.random() * 100);
+			}, 1000/5);
 		});
 	</script>
 

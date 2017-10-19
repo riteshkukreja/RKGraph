@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+	<script type="text/javascript" src="../angular-RKGraphs.js"></script>
+	<style type="text/css">
+		body { background: #CCC; overflow: hidden; text-align: center; margin: 0px; }
+	</style>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+
+	<div>
+		<linegraph width="280" height="280" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></linegraph>
+		<pointgraph width="280" height="280" data-inputs="data" data-radius="2" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></pointgraph>
+		<bargraph width="280" height="280" data-inputs="data" data-barspacing="10" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></bargraph>
+	</div>
+	<div>
+		<polylinegraph width="280" height="280" data-stroke="true" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></polylinegraph>
+		<polygongraph width="280" height="280" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></polygongraph>
+		<piegraph width="280" height="280" data-inputs="piedata" data-columns="columns" data-average="black" data-theme="light" data-colors="colors"></piegraph>
+	</div>
+
+	<script type="text/javascript">
+		var app = angular.module("myapp", ['RKGraph']);
+		app.controller("myctrl", function($scope, $interval, GraphProvider) {
+			$scope.data = [5,6,7,3];
+			$scope.piedata = [5,6,7,3];
+			$scope.colors = ["#c0392b", "#27ae60", "#2980b9", "#f39c12"];
+			$scope.columns = ["1", "2", "3", "4"];
+
+			$interval(function() {
+				$scope.data.push(Math.random() * 100);
+			}, 100);
+		});
+	</script>
+
+</body>
+</html>

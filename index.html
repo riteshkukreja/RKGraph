@@ -1,34 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-	<script type="text/javascript" src="angular-RKGraphs.js"></script>
+	<title>RKGraph Examples</title>
 	<style type="text/css">
-		body { background: #CCC; }
+		@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300);
+		body {
+			background: #111;
+			margin: 0;
+			font-family: "Roboto Condensed";
+		}
+
+		h1 {
+			display: block;
+			color: #FFF;
+			text-align: center;
+			width: 100%;
+		}
+
+		div.nav {
+			width: 100%;
+			text-align: center;
+		}
+
+		div.nav > span {
+			display: inline-block;
+			padding: 10px;
+			color: #aaa;
+		}
+
+		div.nav span:hover, div.nav span.selected {
+			background: #C67;
+			color: #EEE;
+			cursor: pointer;
+		}
+
+		iframe {
+			width: 80%;
+			margin: 0 auto;
+			margin-left: 10%;
+			height: calc(100vh - 200px);
+			margin-top: 20px;
+			border: 0;
+			overflow: hidden;
+		}
 	</style>
 </head>
-<body ng-app="myapp" ng-controller="myctrl">
+<body>
 
-	<linegraph width="300" height="300" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></linegraph>
-	<pointgraph width="300" height="300" data-inputs="data" data-radius="2" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></pointgraph>
-	<bargraph width="300" height="300" data-inputs="data" data-barspacing="10" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></bargraph>
-	<polylinegraph width="300" height="300" data-stroke="true" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></polylinegraph>
-	<polygongraph width="300" height="300" data-inputs="data" data-columns="10" data-average="black" data-theme="light" data-color="#2980b9"></polygongraph>
-	<piegraph width="300" height="300" data-inputs="piedata" data-columns="columns" data-average="black" data-theme="light" data-colors="colors"></piegraph>
+	<h1>RKGraph Examples</h1>
+	<div class="nav">
+		<span onclick="load('Examples/linegraph.html', this)" class="selected">Line Graph</span>
+		<span onclick="load('Examples/curvegraph.html', this)">Curve Graph</span>
+		<span onclick="load('Examples/pieChart.html', this)">Pie Chart</span>
+		<span onclick="load('Examples/polygonGraph.html', this)">Polygon Graph</span>
+		<span onclick="load('Examples/bargraph.html', this)">Bar Graph</span>
+		<span onclick="load('Examples/multiplegraphs.html', this)">Multiple Graphs</span>
+		<span onclick="load('Examples/pointGraph.html', this)">Point Chart</span>
+		<span onclick="load('Examples/polylineGraph.html', this)">Polyline Graphs</span>
+		<span onclick="load('Examples/dynamicgraphs.html', this)">Dynamic Graphs</span>
+		<span onclick="load('Examples/angulargraphs.html', this)">Angular Graphs</span>
+	</div>
+
+	<iframe></iframe>
 
 	<script type="text/javascript">
-		var app = angular.module("myapp", ['RKGraph']);
-		app.controller("myctrl", function($scope, $interval, GraphProvider) {
-			$scope.data = [5,6,7,3];
-			$scope.piedata = [5,6,7,3];
-			$scope.colors = ["#c0392b", "#27ae60", "#2980b9", "#f39c12"];
-			$scope.columns = ["1", "2", "3", "4"];
+		var iframe = document.querySelector("iframe");
 
-			$interval(function() {
-				$scope.data.push(Math.random() * 100);
-			}, 100);
-		});
+		function load(loader, self) {
+			// select clicked
+			var selectedElements = document.getElementsByClassName("selected");
+			selectedElements[0].classList.remove("selected");
+			self.classList.add("selected");
+			show(loader);
+		}
+
+		function show(loader) {
+			iframe.src = loader;
+		}
+
+		show('Examples/linegraph.html');
 	</script>
 
 </body>
