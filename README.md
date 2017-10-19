@@ -1,6 +1,6 @@
 # RKGraph JS
 
-A simple SVG based graphing library to create dynamic graphs in JavaScript and Angular JS. Predefined graphs consist of Line, Point, Pie Chart, Polyline, Polygon and Curve Graph. It also provides a way to create your own graph using combination of predefined graphs and your imagination.
+A simple SVG based graphing library to create dynamic graphs in JavaScript and Angular JS. Predefined graphs consist of Line, Point, Pie Chart, Polyline, Polygon and Curve Graph. It also provides a way to create your own graph using combination of predefined graphs and your imagination. [**Demo**](https://riteshkukreja.github.io/RKGraph/)
 
 ## Writing a simple graph
 
@@ -123,17 +123,13 @@ It is used to draw everything on the graph.
 
 ### Arguments
 
-#### width
-Width of the graph.
+**width**: Width of the graph.
 
-#### height
-Height of the graph.
+**height**: Height of the graph.
 
-#### config
-Basic properties object to apply to each SVG elements. Such as `class` or `style`.
+**config**: Basic properties object to apply to each SVG elements. Such as `class` or `style`.
 
-#### dom
-SVG element in which the entire graph will be drawn.
+**dom**: SVG element in which the entire graph will be drawn.
 
 ### Methods
 
@@ -441,29 +437,21 @@ It contains the next data point if exists, otherwise null.
 #### config
 It contains the basic configurations required to draw points on the graphs.
 
-##### theme
-The theme of the graph.
+**theme**: The theme of the graph.
 
-##### length
-Number fo data points on the graph to show.
+**length**: Number fo data points on the graph to show.
 
-##### top
-Top most corner of the graph.
+**top**: Top most corner of the graph.
 
-##### left
-Left most corner of the graph.
+**left**: Left most corner of the graph.
 
-##### right
-Right most corner of the graph.
+**right**: Right most corner of the graph.
 
-##### bottom
-Bottom most corner of the graph.
+**bottom**: Bottom most corner of the graph.
 
-##### rows
-Number of rows in the graph.
+**rows**: Number of rows in the graph.
 
-##### cols
-Number of columns in the graph.
+**cols**: Number of columns in the graph.
 
 ## Updating graphs
 The graph object has one method `Add()` which allows user to add data points programmatically.
@@ -538,3 +526,4 @@ app.controller("myctrl", function($scope, $interval, GraphProvider) {
 -	bargraph
 -	pointgraph
 -	linegraph
+
