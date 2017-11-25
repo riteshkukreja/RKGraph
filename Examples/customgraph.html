@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RKGraph - Custom graph | stocks</title>
+    <style type="text/css">
+		body { overflow: hidden; text-align: center; margin: 0; background: #121212; }
+		svg { text-align: center; }
+        .increase { transform-origin: 50% 100%; animation: scale 200ms linear forwards 1; }
+        .decrease { transform-origin: 50% 0%; animation: scale 200ms linear forwards 1; }
+
+        @keyframes scale {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+	</style>
+</head>
+<body>
+    <script type="text/javascript" src="../RKGraphs.js"></script>
+	<script type="text/javascript">
+		var config = {
+			width: window.innerWidth/2,
+			height: window.innerHeight,
+            data: [],
+            theme: {
+                textColor: "#069"
+            },
+            columns: 20        
+        };
+
+        config.show2DVertices = true;
+        var barSpacing = 5;
+        
+        config.customDraw = function(svgDoc, prevPoint, currPoint, nextPoint, config) {
+            var bar_width = (config.right - config.left - (config.cols-1)*barSpacing) / (config.cols);
+
+            if(prevPoint == null) {
+                // first point
+                svgDoc.Rect(currPoint.x, currPoint.y, bar_width/2, config.bottom - currPoint.y, {
+					"fill": "#069",
+                    "class": (nextPoint == null ? "increase": "")
+				});
+            } else if(prevPoint.y < currPoint.y) {
+                // if increase in price
+                svgDoc.Rect(currPoint.x, prevPoint.y, bar_width/2, currPoint.y - prevPoint.y, {
+					"fill": "#A12",
+                    "class": (nextPoint == null ? "decrease": "")
+				});
+            } else {
+                // if decrease in price
+                svgDoc.Rect(currPoint.x, currPoint.y, bar_width/2, prevPoint.y - currPoint.y, {
+                    "fill": "#069",
+                    "class": (nextPoint == null ? "increase": "")
+				});
+            }
+        };
+
+        var g = new RKGraph.Graph(config);
+        var lastValue = 0;
+
+        setInterval(function() {
+            let change = lastValue / 10 || 10;
+            let r = Math.floor(Math.random() * (2*change) - change) + lastValue;
+
+            g.Add(r);
+        }, 1000);
+	</script>
+</body>
+</html>

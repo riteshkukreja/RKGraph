@@ -1106,6 +1106,7 @@
 		BarGraph: BarGraph,
 		PieGraph: PieGraph,
 		CurveGraph: CurveGraph,
-		Themes: Themes
+		Themes: Themes,
+		Graph: Graph
 	};
 })();
