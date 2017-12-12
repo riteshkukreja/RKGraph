@@ -1,0 +1,21 @@
+{
+  "name": "rkgraph",
+  "version": "1.0.0",
+  "description": "A simple SVG based graphing library to create dynamic graphs in JavaScript and Angular JS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riteshkukreja/RKGraph.git"
+  },
+  "keywords": [
+    "SVG",
+    "graphs",
+    "JavaScript",
+    "angular"
+  ],
+  "author": "Ritesh Kukreja <ritesh101094@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riteshkukreja/RKGraph/issues"
+  },
+  "homepage": "https://github.com/riteshkukreja/RKGraph#readme"
+}
